@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom'
 import Home from './containers/home'
-import About from './containers/about'
-import axios from 'axios';
+import Therapy from './containers/therapy'
+import DogMap from './containers/dogMap'
 
 const App = () => (
   <div className="App">
 
     <div className="App-header">
       <Link to="/">Home</Link>
-      <Link to="/about-us">About</Link>
+      <Link to="/therapy">Therapy</Link>
+      <Link to="/map">Map</Link>
       <h2>Dangerous Dogs</h2>
     </div>
 
     <main>
       <Route exact path="/" component={Home} />
-      <Route exact path="/about-us" component={About} />
+      <Route exact path="/therapy" component={Therapy} />
+      <Route exact path="/map" component={DogMap} />
     </main>
 
   </div>

@@ -9,11 +9,10 @@ import {
 const Home = props => (
   <div>
     <h1>Home</h1>
-    <p>Welcome home!</p>
     <div>Current dog count: {props.dogs.length}</div>
     <div>isFetching: {props.isFetching.toString()}</div>
     <button onClick={() => props.fetchDogs()}>get dem dogs</button>
-    <button onClick={() => props.changePage()}>Go to about page via redux</button>
+    <button onClick={() => props.changePage()}>Go to therapy page via redux</button>
   </div>
 )
 
@@ -24,7 +23,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/about-us'),
+  changePage: () => push('/therapy'),
   fetchDogs
 }, dispatch)
 
