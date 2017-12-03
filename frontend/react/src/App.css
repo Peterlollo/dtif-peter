@@ -18,3 +18,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.instructions {
+  visibility: hidden;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.instructions.show {
+  opacity: 1;
+  visibility: visible;
+}
