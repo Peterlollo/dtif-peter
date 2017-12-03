@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case IS_FETCHING:
       return {
         ...state,
-        isFetching: true,
+        isFetching: 'nope',
         fetchSuccess: false
       }
 
@@ -41,11 +41,11 @@ export default (state = initialState, action) => {
 }
 
 export const fetchError = (error) => {
-  return { type: 'FETCH_ERROR', error }
+  return { type: FETCH_ERROR, error }
 }
 
 export const fetchSuccess = (data) => {
-  return { type: 'FETCH_SUCCESS', data }
+  return { type: FETCH_SUCCESS, data }
 }
 
 export const fetchDogs = () => {
@@ -55,14 +55,8 @@ export const fetchDogs = () => {
       .then((res) => {
       	return res.json()
       }).then(
-      	data => { console.log(data); dispatch(fetchSuccess(data)) },
+      	data => dispatch(fetchSuccess(data)),
         error => dispatch(fetchError(error))
       )
-        // TODO: Decided how to store the response data.
-    // axios.get('https://data.austintexas.gov/resource/h8x4-nvyi.json')
-    //   .then((res) => {
-    //     console.log(res);
-    //     // TODO: Decided how to store the response data.
-    //   })
   }
 }
