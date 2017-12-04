@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -8,7 +7,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store'
 // import DevTools for use in development
-import DevTools from './containers/devTools'
+// import DevTools from './containers/devTools'
 
 const target = document.querySelector('#root')
 registerServiceWorker();
@@ -19,7 +18,7 @@ render(
       <div>
         <App />
         {/* Add DevTools component for use in development */}
-        <DevTools></DevTools>
+        {/* <DevTools></DevTools> */}
       </div>
     </ConnectedRouter>
   </Provider>,

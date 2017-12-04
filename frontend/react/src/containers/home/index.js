@@ -6,30 +6,41 @@ import { connect } from 'react-redux'
 import { fetchDogs } from '../../modules/dogs'
 import './home.css'
 
-const Home = props => (
-  <div>
-    <h1 className="title">Dr Nygaard's Dangerous Dogs Immersion Therapy</h1>
-    <div className="card-container">
-      <div className="card">
-        <div className="card-title"><h2>Welcome dear cynophobe</h2></div>
-        <div className="content">
-          <p>When you are ready, please begin your immersion therapy</p>
-        </div>
-        <div className="action">
-          <button className="btn" onClick={() => props.beginTherapy()}>Begin</button>
+const contentText = (props) => {
+  if (props.fetchSuccess) {
+    return 'When you are ready, please begin your immersion therapy'
+  } else {
+    return 'Terribly sorry, the dogs are missing.'
+  }
+}
+
+const Home = props => {
+
+  let text = contentText(props)
+  let success = props.fetchSuccess
+
+  return (
+    <div>
+      <h1 className="title">Dr Nygaard's Dangerous Dogs Immersion Therapy</h1>
+      <div className="card-container">
+        <div className="card">
+          <div className="card-title"><h2>Welcome dear cynophobe</h2></div>
+          <div className="content">
+            <p>{text}</p>
+          </div>
+          <div className="action">
+            <button className={`btn ${success ? 'show' : 'hide'}`} onClick={() => props.beginTherapy()}>Begin</button>
+            <button className={`btn ${success ? 'hide' : 'show'}`} onClick={() => props.fetchDogs()}>Fetch the hounds</button>
+          </div>
         </div>
       </div>
     </div>
-    <div>Current dog count: {props.dogs.length}</div>
-    <div>isFetching: {props.isFetching.toString()}</div>
-    <button onClick={() => props.beginTherapy()}>get dem dogs</button>
-  </div>
-)
+  )
+}
 
 const mapStateToProps = state => ({
-  dogs: state.dogs.dogs,
-  isFetching: state.dogs.isFetching,
-  fetchingDone: state.dogs.fetchingDone
+  fetchSuccess: state.dogs.fetchSuccess,
+  fetchError: state.dogs.fetchError
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
