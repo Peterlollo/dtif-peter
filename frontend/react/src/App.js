@@ -1,27 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import Home from './containers/home'
 import Therapy from './containers/therapy'
 import DogMap from './containers/dogMap'
+import Header from './components/header'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { fetchDogs } from './modules/dogs'
 
-const App = () => (
-  <div className="App">
+class App extends Component {
+  
+  constructor(props) {
+    super(props)
+  }
 
-    <div className="App-header">
-      <Link to="/">Home</Link>
-      <Link to="/therapy">Therapy</Link>
-      <Link to="/map">Map</Link>
-      <h2>Dangerous Dogs</h2>
-    </div>
+  componentWillMount (props) {
+    this.props.fetchDogs()
+  }
 
-    <main>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/therapy" component={Therapy} />
-      <Route exact path="/map" component={DogMap} />
-    </main>
+  render () {
+    return (
+      <div className="App">
+        <Header></Header>
+        <div className='container'>
+          <main>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/therapy" component={Therapy} />
+            <Route exact path="/map" component={DogMap} />
+          </main>
+        </div>
+      </div>
+    )
+  }
+}
 
-  </div>
-)
+const mapStateToProps = state => ({
+})
 
-export default App;
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchDogs
+}, dispatch)
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App))

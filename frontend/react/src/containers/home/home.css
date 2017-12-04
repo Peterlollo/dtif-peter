@@ -1,0 +1,36 @@
+.title {
+  margin-bottom: 50px;
+}
+.card-container {
+  margin: 0 auto;
+}
+.card {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card .card-title {
+  background-color: #FBFBFB;;
+  border-bottom: solid 2px #EEE;
+  border-top: solid 2px #EEE;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 25px;
+}
+.card .content {
+  margin-bottom: 25px;
+  padding: 0 10px;
+  font-size: 1.35rem;
+}
+.card .action {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .card-container {
+    width: 50%;
+  }
+}

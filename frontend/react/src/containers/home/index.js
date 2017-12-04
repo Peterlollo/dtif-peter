@@ -1,18 +1,28 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {
-  fetchDogs
-} from '../../modules/dogs'
+import { fetchDogs } from '../../modules/dogs'
+import './home.css'
 
 const Home = props => (
   <div>
-    <h1>Home</h1>
+    <h1 className="title">Dr Nygaard's Dangerous Dogs Immersion Therapy</h1>
+    <div className="card-container">
+      <div className="card">
+        <div className="card-title"><h2>Welcome dear cynophobe</h2></div>
+        <div className="content">
+          <p>When you are ready, please begin your immersion therapy</p>
+        </div>
+        <div className="action">
+          <button className="btn" onClick={() => props.beginTherapy()}>Begin</button>
+        </div>
+      </div>
+    </div>
     <div>Current dog count: {props.dogs.length}</div>
     <div>isFetching: {props.isFetching.toString()}</div>
-    <button onClick={() => props.fetchDogs()}>get dem dogs</button>
-    <button onClick={() => props.changePage()}>Go to therapy page via redux</button>
+    <button onClick={() => props.beginTherapy()}>get dem dogs</button>
   </div>
 )
 
@@ -23,11 +33,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/therapy'),
+  beginTherapy: () => push('/therapy'),
   fetchDogs
 }, dispatch)
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Home))

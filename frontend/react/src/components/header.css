@@ -1,0 +1,31 @@
+.App-header {
+  height: 60px;
+  padding: 20px;
+  color: #FBFBFB;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px #EEE;
+  margin-bottom: 40px;
+}
+.home-logo {
+  background-image: url('../images/dog-home.png');
+  background-size: cover;
+  width: 80px;
+  height: 80px;
+}
+.nav-home, .nav-menu {
+  display: flex;
+  flex-direction: row;
+}
+.nav-home {
+  justify-content: flex-start;
+}
+.nav-menu {
+  justify-content: space-between;
+}
+.nav-menu > a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
